@@ -1,0 +1,1 @@
+& "C:\Program Files\PostgreSQL\13\bin\pg_ctl.exe" -D "C:\Users\User\OneDrive\Documentos\2. Estudios - Proyectos\3. Proyectos - Tesis\3. Tesis Realizadas\3. Ova\code\ovacademy\bd" -o "-p 5433" start

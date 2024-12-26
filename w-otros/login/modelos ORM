@@ -1,0 +1,130 @@
+# Métodos básicos de consulta
+# all()
+# Recupera todos los registros de una tabla.
+
+# typescript
+# Copiar código
+# const users = await User.all()
+# find(id)
+# Encuentra un registro por su clave primaria.
+
+# typescript
+# Copiar código
+# const user = await User.find(1)
+# findOrFail(id)
+# Encuentra un registro por su clave primaria y lanza una excepción si no se encuentra.
+
+# typescript
+# Copiar código
+# const user = await User.findOrFail(1)
+# first()
+# Obtiene el primer registro que coincide con los criterios de consulta.
+
+# typescript
+# Copiar código
+# const user = await User.query().where('email', 'example@mail.com').first()
+# Consultas con filtros
+# where(column, value)
+# Filtra registros por una columna.
+
+# typescript
+# Copiar código
+# const users = await User.query().where('is_active', true)
+# orWhere(column, value)
+# Agrega una condición OR a la consulta.
+
+# typescript
+# Copiar código
+# const users = await User.query().where('role', 'admin').orWhere('role', 'moderator')
+# whereIn(column, array)
+# Filtra registros donde la columna tenga uno de los valores de un array.
+
+# typescript
+# Copiar código
+# const users = await User.query().whereIn('id', [1, 2, 3])
+# whereNot(column, value)
+# Filtra registros que no coincidan con un valor específico.
+
+# typescript
+# Copiar código
+# const users = await User.query().whereNot('is_active', false)
+# whereNull(column)
+# Filtra registros donde la columna sea NULL.
+
+# typescript
+# Copiar código
+# const users = await User.query().whereNull('deleted_at')
+# whereNotNull(column)
+# Filtra registros donde la columna no sea NULL.
+
+# typescript
+# Copiar código
+# const users = await User.query().whereNotNull('created_at')
+# Paginación
+# paginate(page, limit)
+# Recupera registros paginados.
+# typescript
+# Copiar código
+# const users = await User.query().paginate(1, 10)
+# Ordenamiento
+# orderBy(column, direction)
+# Ordena los registros por una columna (ascendente o descendente).
+# typescript
+# Copiar código
+# const users = await User.query().orderBy('created_at', 'desc')
+# Relaciones
+# preload(relationship)
+# Carga relaciones definidas en el modelo.
+
+# typescript
+# Copiar código
+# const user = await User.query().preload('profile').where('id', 1).first()
+# load(relationship)
+# Carga relaciones después de obtener un modelo.
+
+# typescript
+# Copiar código
+# await user.load('posts')
+# Creación y Actualización
+# create(data)
+# Crea un nuevo registro.
+
+# typescript
+# Copiar código
+# const user = await User.create({
+#   username: 'newuser',
+#   email: 'newuser@mail.com',
+# })
+# update(data)
+# Actualiza un registro existente.
+
+# typescript
+# Copiar código
+# user.username = 'updateduser'
+# await user.save()
+# merge(data)
+# Combina datos en un modelo antes de guardar.
+
+# typescript
+# Copiar código
+# user.merge({ username: 'mergeduser' })
+# await user.save()
+# Eliminación
+# delete()
+# Elimina un registro.
+
+# typescript
+# Copiar código
+# await user.delete()
+# softDelete() (Si usas timestamps con deleted_at)
+# Marca un registro como eliminado sin eliminarlo físicamente.
+
+# typescript
+# Copiar código
+# await user.softDelete()
+# restore() (Soft Delete)
+# Restaura un registro eliminado.
+
+# typescript
+# Copiar código
+# await user.restore()
